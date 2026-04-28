@@ -5,45 +5,57 @@ public class Calculator {
     public static void main(String [] args){
 
         Scanner scanner = new Scanner(System.in);
+        char choice = 'y';
 
-        double num1;
-        double num2;
-        char operator;
-        double result;
+        do {
+            System.out.println("===== CALCULATOR =====");
+            System.out.println("1. Add");
+            System.out.println("2. Subtract");
+            System.out.println("3. Multiply");
+            System.out.println("4. Divide");
 
-        System.out.print("Enter your first number: ");
-        num1 = scanner.nextDouble();
+            System.out.print("Choose option (1-4): ");
+            int option = scanner.nextInt();
 
-        System.out.print("Enter operator (+, -, *, /): ");
-        operator = scanner.next().charAt(0);
-
-        System.out.print("Enter second number: ");
-        num2 = scanner.nextDouble();
-
-        if (operator == '+'){
-            result = num1 + num2;
-        }
-        else if (operator == '-') {
-            result = num1 - num2;
-        }
-        else if (operator == '*') {
-            result = num1 * num2;
-        }
-        else if (operator == '/') {
-            if (num2 == 0) {
-                System.out.println("Cannot be divided by zero");
-                return;
-            }
-            result = num1 / num2;
-
-        }
-            else{
-                System.out.println("Invalid operator");
-                return;
+            if(option < 1 || option > 4){
+                System.out.println("invalid input. Try again.");
+                continue; // goes back to start of the loop
             }
 
-        System.out.println("Result: " + result);
+            System.out.print("Enter first number: ");
+            double num1 = scanner.nextDouble();
 
+            System.out.println("Enter second number: ");
+            double num2 = scanner.nextDouble();
+
+            double result = 0;
+
+            if (option == 1) {
+                result = num1 + num2;
+                System.out.println(num1 + " + " + num2 + " = " + result);
+            } else if (option == 2) {
+                result = num1 - num2;
+                System.out.println(num1 + " - " + num2 + " = " + result);
+            } else if (option == 3) {
+                result = num1 * num2;
+                System.out.println(num1 + " * " + num2 + " = " + result);
+            } else if (option == 4) {
+                if (num2 == 0) {
+                    System.out.println("Cannot divide by zero.");
+                } else {
+                    result = num1 / num2;
+                    System.out.println(num1 + " / " + num2 + " = " + result);
+                }
+            } else {
+                System.out.println("Invalid option.");
+            }
+
+            System.out.println("Do you want to continue? (y/n): ");
+            choice = scanner.next().charAt(0);
+
+        } while (choice == 'y' || choice == 'Y');
+
+        System.out.println("Caluclator closed.");
         scanner.close();
     }
 }
