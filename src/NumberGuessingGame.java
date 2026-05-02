@@ -1,9 +1,6 @@
-import java.util.Scanner;
-
-public class Main {
+public class NumberGuessingGame {
     public static void main(String[] args){
 
-
-
+        
     }
 }
